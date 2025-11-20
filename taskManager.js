@@ -35,7 +35,7 @@ function handleMenu(choice) {
         break;
     default: 
         console.log("Invalid choice!"); 
-        showMenu();
+        
   }
 }
-
+menu();
