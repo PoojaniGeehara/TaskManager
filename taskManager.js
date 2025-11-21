@@ -39,3 +39,34 @@ function handleMenu(choice) {
   }
 }
 menu();
+
+function listTasks() {
+  console.log("\nYour Tasks:");
+
+  if (tasks.length === 0) {
+    console.log("No tasks found!");
+  } else {
+    tasks.forEach((task, index) => {
+      const status = task.completed ? "[x]" : "[ ]";
+      console.log(`${index + 1}. ${status} ${task.name}`);
+    });
+  }
+ menu();
+ 
+}
+
+
+function addTask() {
+  rl.question("\nEnter new task name: ", (taskName) => {
+    if (taskName.trim() === "") {
+      console.log("❌ Task name cannot be empty!");
+      return addTask();
+    }
+
+    tasks.push({ name: taskName.trim(), completed: false });
+    console.log("✅ Task added!");
+
+    menu();
+  });
+}
+
