@@ -59,12 +59,12 @@ function listTasks() {
 function addTask() {
   rl.question("\nEnter new task name: ", (taskName) => {
     if (taskName.trim() === "") {
-      console.log("❌ Task name cannot be empty!");
+      console.log("Task name cannot be empty!");
       return addTask();
     }
 
     tasks.push({ name: taskName.trim(), completed: false });
-    console.log("✅ Task added!");
+    console.log("Task added!");
 
     menu();
   });
