@@ -38,12 +38,10 @@ function handleMenu(choice) {
         r.close(); 
         break;
     default: 
-        console.log("Invalid choice!");   
-        break; 
-        menu(); 
+        console.log("Invalid choice!");                       
   }
 }
-
+menu();
 
 // List all tasks
 function listTasks() {
