@@ -55,7 +55,7 @@ function listTasks() {
       console.log(`${index + 1}. ${status} ${task.name}`);
     });
   }
- menu();
+  menu();
 }
 
 // Add a new task
@@ -115,4 +115,3 @@ function deleteTask() {
   });
 }
 
-menu();
