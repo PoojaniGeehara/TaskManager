@@ -6,17 +6,19 @@ const r = readline.createInterface({
 
 let tasks = [];
 
+// Display main menu
 function menu() {
 console.log( "Welcome to Task Manager!");
 console.log( "1. List tasks");
 console.log( "2. Add new task");
 console.log( "3. Mark task as complete");
 console.log( "4. Delete task");
-console.log( "5. Exit");
-
+console.log( "5. Exit"
+);
  r.question("Select an option: ", handleMenu);
 }
 
+// Menu handler
 function handleMenu(choice) {
   switch (choice) {
     case "1": 
@@ -36,13 +38,14 @@ function handleMenu(choice) {
         r.close(); 
         break;
     default: 
-        console.log("Invalid choice!"); 
-        
-        break;  
+        console.log("Invalid choice!");   
+        break; 
+        menu(); 
   }
 }
-menu();
 
+
+// List all tasks
 function listTasks() {
   console.log("\nYour Tasks:");
 
@@ -55,10 +58,9 @@ function listTasks() {
     });
   }
  menu();
- 
 }
 
-
+// Add a new task
 function addTask() {
   r.question("\nEnter new task name: ", (taskName) => {
     if (taskName === "") {
@@ -73,6 +75,7 @@ function addTask() {
   });
 }
 
+// Mark a task as complete
 function completeTask() {
   if (tasks.length === 0) {
     console.log(" No tasks to complete!");
@@ -93,6 +96,7 @@ function completeTask() {
   });
 }
 
+// Delete a task
 function deleteTask() {
   if (tasks.length === 0) {
     console.log("No tasks to delete!");
