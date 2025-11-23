@@ -4,6 +4,8 @@ const r = readline.createInterface({
   output: process.stdout,
 });
 
+let tasks = [];
+
 function menu() {
 console.log( "Welcome to Task Manager!");
 console.log( "1. List tasks");
@@ -31,11 +33,12 @@ function handleMenu(choice) {
        break;
     case "5": 
         console.log("Exiting program. Goodbye!"); 
-        rl.close(); 
+        r.close(); 
         break;
     default: 
         console.log("Invalid choice!"); 
         
+        break;  
   }
 }
 menu();
@@ -57,16 +60,35 @@ function listTasks() {
 
 
 function addTask() {
-  rl.question("\nEnter new task name: ", (taskName) => {
-    if (taskName.trim() === "") {
+  r.question("\nEnter new task name: ", (taskName) => {
+    if (taskName === "") {
       console.log("Task name cannot be empty!");
       return addTask();
     }
 
     tasks.push({ name: taskName.trim(), completed: false });
-    console.log("Task added!");
+    console.log("✅ Task added!");
 
     menu();
   });
 }
 
+function completeTask() {
+  if (tasks.length === 0) {
+    console.log(" No tasks to complete!");
+    return menu();
+  }
+
+  r.question("\nEnter task number to complete: ", (num) => {
+    let index = num - 1;
+
+    if (!tasks[index]) {
+      console.log("Invalid task number!");
+      return completeTask(); 
+    }
+
+    tasks[index].completed = true;
+    console.log("✅ Task completed!");
+    menu();
+  });
+}
