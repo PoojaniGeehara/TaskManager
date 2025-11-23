@@ -66,7 +66,7 @@ function addTask() {
       return addTask();
     }
 
-    tasks.push({ name: taskName.trim(), completed: false });
+    tasks.push({ name: taskName, completed: false });
     console.log("✅ Task added!");
 
     menu();
@@ -92,3 +92,25 @@ function completeTask() {
     menu();
   });
 }
+
+function deleteTask() {
+  if (tasks.length === 0) {
+    console.log("No tasks to delete!");
+    return menu();
+  }
+
+  r.question("Enter task number to delete: ", function (number) {
+    let index = Number(number) - 1;
+
+    if (index < 0 || index >= tasks.length) {
+      console.log("Invalid task number!");
+      return deleteTask();
+    }
+
+    tasks.splice(index, 1); 
+    console.log("Task deleted!");
+    menu();
+  });
+}
+
+menu();
